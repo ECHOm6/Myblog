@@ -1,0 +1,23 @@
+<?php
+
+namespace App\admin;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Buser extends Model
+{
+    //
+    protected $table='b_user';
+    //一下内容可选‘
+    //定义主键
+    protected $primarykey='id';
+    // 定义禁止操作时间
+    public $timestamps=false;
+    protected $fillable = [
+       'id', 'name', 'email', 'passwd','phone'
+    ];
+    public  function role(){
+        return $this->belongsToMany('App\admin\Role','b_user_role','uid','rid');
+
+    }
+}
